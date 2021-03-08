@@ -20,6 +20,6 @@ public class ProductService {
 	public ProductDTO findById(Long id) {
 		Optional<Product> result = repository.findById(id);
 		Product entity = result.get();
-		return new ProductDTO(entity, entity.getCategories());
+		return new ProductDTO(entity);
 	}
 }

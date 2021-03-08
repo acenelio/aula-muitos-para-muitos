@@ -3,9 +3,7 @@ package com.devsuperior.dscatalog.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import com.devsuperior.dscatalog.entities.Category;
 import com.devsuperior.dscatalog.entities.Product;
 
 public class ProductDTO implements Serializable {
@@ -36,11 +34,7 @@ public class ProductDTO implements Serializable {
 		this.description = entity.getDescription();
 		this.price = entity.getPrice();
 		this.imgUrl = entity.getImgUrl();
-	}
-	
-	public ProductDTO(Product entity, Set<Category> categories) {
-		this(entity);
-		categories.forEach(cat -> this.categories.add(new CategoryDTO(cat)));
+		entity.getCategories().forEach(cat -> this.categories.add(new CategoryDTO(cat)));
 	}
 
 	public Long getId() {
